@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
-    List<Recipe> findByRecipeTypeId(Long recipeTypeId);
+    List<Recipe> findByRecipeTypeId(long recipeTypeId);
 
     @Query("SELECT rec FROM Recipe rec WHERE rec.name = ?1")
     List<Recipe> findByNameCustom(String name);

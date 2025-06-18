@@ -2,15 +2,16 @@ package com.gmail.davidsavignac.cooking.recipes.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "RECIPE")
-@Data
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Recipe {
 
     @Id
@@ -25,4 +26,11 @@ public class Recipe {
     @JoinColumn(name = "RECIPE_TYPE_ID", nullable = false)
     RecipeType recipeType;
 
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

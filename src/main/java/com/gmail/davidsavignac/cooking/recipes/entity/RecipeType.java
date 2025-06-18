@@ -2,9 +2,8 @@ package com.gmail.davidsavignac.cooking.recipes.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
@@ -12,7 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "RECIPE_TYPE")
-@Data
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class RecipeType {
 
     @Id
@@ -26,4 +27,11 @@ public class RecipeType {
     @OneToMany(mappedBy = "recipeType", fetch = FetchType.LAZY)
     List<Recipe> recipes;
 
+    @Override
+    public String toString() {
+        return "RecipeType{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
