@@ -30,4 +30,15 @@ class RecipeControllerTest {
 
     }
 
+    @Test
+    void findRecipes() throws Exception {
+
+        String jsonResponse = mockMvc.perform(get("/recipe").param("recipeType", "1"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+
+        assertThat(jsonResponse)
+                .contains("[{\"id\":1,\"name\":\"Pasta alla saracena\",\"recipeType\":{\"id\":1,\"name\":\"Plat principal\"}}]");
+
+    }
 }
